@@ -1,0 +1,55 @@
+﻿######################## DF SETTINGS ###########################
+#COMPUTEDOCCOUNT finds the number of documents in the corpus. This will be required for finding IDF values
+COMPUTEDOCCOUNT=NO
+#COMPUTEIDF=NO overrides all other IDF related parameter settings.
+COMPUTEIDF=NO
+#DF file to read
+DFFILE=c:\users\sramamurthy\Documents\NewtonOutput\summary.df
+CORPUSDOCCOUNT=1072877
+WRITEIDF=NO
+PRINTIDFSTATS=YES
+#Format of IDF to compute. Allowed values are IDF [IDFSMOOTH, PROBIDF will be supported later]
+IDFFORMAT=IDF
+#Multiple binary files containing information regardding the IDF will be created
+#When using in other programs this base name has to be given so all the neccessary
+#file can be read by that program and processing can be done.
+IDFSTOREBASENAME=c:\users\sramamurthy\Documents\NewtonOutput\IDF
+
+######################### TF SETTINGS ###########################
+# COMPUTETDMATRIX overrides all TF settings
+COMPUTETDMATRIX=NO
+#TF FILE LOCATION
+TFFILEDIR=c:\users\sramamurthy\Documents\NewtonOutput
+TFFILEEXT=tf
+#Formats allowed are 1) RAW_IDF 2) NOR_IDF 3) LOGNOR_IDF 4) DOUBNOR_IDF
+# Further IDF formats will be supported later
+TFIDFFormat=RAW_IDF
+
+####################### Relevance Dataset ##########################
+#Relevancy file location
+RELFILE=C:\Users\sramamurthy\Documents\NewtonOutput\Relevancy.csv
+CALCRELNONRELSIMILARITY=NO
+
+####################### IDF Simulation #############################
+# It will run starting with all terms that have DF Percentage less than DFSTART and calculate similarity
+# It will iterate similarly by decrementing upto the DFEND value for the DF percentage.
+# DFSTART should be greater than DFEND
+
+# Make sure that COMPUTETDMATRIX is set to YES if RUNIDFRANGE is set to YES
+RUNIDFRANGE=NO
+DFSTART=0.5
+DFEND=0.01
+DFDECREMENT=0.01
+
+################### Rocchio Algorithm ###############################
+# Currently, it will take in a DF value that filters all terms that have 
+# DF% greater than this value out of the term list used. It will do standard
+# Rocchio classification based on measure such as cosine similarity or euclidian
+# distance etc.
+# For computing TFIDF matrix as well as other details it will take parameters 
+# from previous sections as necessary. But the other sections can be set to NO
+# to avoid unnecessary repetitive computations.
+ROCCHIO=YES
+DFVALUE=0.01
+# MEASURE can be COSINE or EUCLID
+MEASURE=COSINE
